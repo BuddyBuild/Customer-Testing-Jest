@@ -1,6 +1,7 @@
 # Jest won't create our folder structure for us, so lets create it first
 mkdir buddybuild_artifacts && mkdir buddybuild_artifacts/Jest
 
-yarn run jest --outputFile=buddybuild_artifacts/Jest/jest.json --json
-# Some users might want to just run
-# npm test instead, depending on how they have everything set up
+if [ "$BUDDYBUILD_BUILD_NUMBER" -ne "1" ]; then 
+  yarn run jest --outputFile=buddybuild_artifacts/Jest/jest.json --json
+fi
+
